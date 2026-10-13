@@ -1,42 +1,122 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Découvrez les événements à venir de Entre Nous.">
   <title>Événements - Entre Nous</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+  <!-- EN-TÊTE -->
   <header class="site-header">
     <div class="logo">Entre Nous</div>
+
     <nav>
       <a href="index.html">Accueil</a>
-      <a href="evenements.html">Événements</a>
+      <a href="evenements.html" class="active">Événements</a>
       <a href="billetterie.html">Billetterie</a>
       <a href="annonces.html">Annonces</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
 
-  <section class="events-list">
-    <h1>Nos événements à venir</h1>
+  <main>
 
-    <div class="event-card">
-      <h3>Gala d'automne</h3>
-      <p class="event-date">15 novembre 2026 · Paris</p>
-      <p>Une soirée élégante pour clôturer l'année en beauté, entre musique live et dîner assis.</p>
-      <a href="billetterie.html?event=gala-automne" class="btn">Acheter un billet</a>
-    </div>
+    <!-- ÉVÉNEMENTS À VENIR -->
+    <section class="section events-list">
 
-    <div class="event-card">
-      <h3>Soirée Chill Still Life</h3>
-      <p class="event-date">29 novembre 2026 · Lyon</p>
-      <p>Ambiance lounge, cocktails et bonne musique pour se retrouver entre nous.</p>
-      <a href="billetterie.html?event=chill-still-life" class="btn">Acheter un billet</a>
-    </div>
-  </section>
+      <div class="section-heading">
+        <span class="eyebrow">AGENDA ENTRE NOUS</span>
+        <h1>Nos événements à venir</h1>
+        <p>
+          Découvre nos prochaines soirées et choisis
+          l'événement auquel tu souhaites participer.
+        </p>
+      </div>
 
+      <!-- ÉVÉNEMENT 1 -->
+      <article class="event-card">
+        <h3>Gala d'automne</h3>
+
+        <p class="event-date">
+          15 novembre 2026 · Paris
+        </p>
+
+        <p>
+          Une soirée élégante pour clôturer l'année en beauté,
+          entre musique live et dîner assis.
+        </p>
+
+        <a href="billetterie.html?event=gala-automne" class="btn">
+          Acheter un billet
+        </a>
+
+        <a
+          href="https://wa.me/2290159599871?text=Bonjour%20Entre%20Nous%2C%20je%20souhaite%20avoir%20des%20informations%20sur%20le%20Gala%20d%27automne."
+          class="btn"
+          target="_blank"
+          rel="noopener noreferrer">
+          Contacter sur WhatsApp
+        </a>
+      </article>
+
+      <!-- ÉVÉNEMENT 2 -->
+      <article class="event-card">
+        <h3>Soirée Chill Still Life</h3>
+
+        <p class="event-date">
+          29 novembre 2026 · Lyon
+        </p>
+
+        <p>
+          Une ambiance lounge et musicale pour se retrouver,
+          partager de bons moments et profiter de la soirée.
+        </p>
+
+        <a href="billetterie.html?event=chill-still-life" class="btn">
+          Acheter un billet
+        </a>
+
+        <a
+          href="https://wa.me/2290159599871?text=Bonjour%20Entre%20Nous%2C%20je%20souhaite%20avoir%20des%20informations%20sur%20la%20Soir%C3%A9e%20Chill%20Still%20Life."
+          class="btn"
+          target="_blank"
+          rel="noopener noreferrer">
+          Contacter sur WhatsApp
+        </a>
+      </article>
+
+      <!-- CONTACT GÉNÉRAL -->
+      <div class="event-card">
+        <h3>Une question sur nos événements ?</h3>
+
+        <p>
+          Pour connaître les tarifs, les disponibilités,
+          les horaires ou les conditions de réservation,
+          contacte directement notre équipe.
+        </p>
+
+        <a
+          href="https://wa.me/2290159599871?text=Bonjour%20Entre%20Nous%2C%20je%20souhaite%20obtenir%20des%20informations%20sur%20vos%20%C3%A9v%C3%A9nements%20%C3%A0%20venir."
+          class="btn"
+          target="_blank"
+          rel="noopener noreferrer">
+          Nous contacter sur WhatsApp
+        </a>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- PIED DE PAGE -->
   <footer>
-    <p>&copy; 2026 Entre Nous. Tous droits réservés.</p>
+    <p>&copy; 2026 <strong>Entre Nous</strong>. Tous droits réservés.</p>
   </footer>
+
 </body>
 </html>
