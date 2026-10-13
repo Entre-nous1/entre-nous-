@@ -1,36 +1,156 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Choisissez votre billet pour les événements Entre Nous.">
   <title>Billetterie - Entre Nous</title>
   <link rel="stylesheet" href="style.css">
+  
+  <style>
+    .ticketing {
+      padding: 70px 6%;
+      background: #101010;
+      min-height: 70vh;
+    }
+
+    .ticket-intro {
+      max-width: 700px;
+      margin: 0 auto 40px;
+      text-align: center;
+      color: #bdbdbd;
+    }
+
+    .ticket-options {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .ticket-option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 22px;
+      text-align: center;
+      background: #1c1c1c;
+      border: 1px solid rgba(216, 173, 85, 0.3);
+      border-radius: 12px;
+      transition: 0.3s ease;
+    }
+
+    .ticket-option:hover {
+      transform: translateY(-5px);
+      border-color: #d8ad55;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .ticket-option h2 {
+      color: #d8ad55;
+      margin-bottom: 15px;
+    }
+
+    .ticket-option p {
+      color: #bdbdbd;
+      margin-bottom: 20px;
+    }
+
+    .ticket-option .btn {
+      margin-top: auto;
+    }
+
+    .ticket-note {
+      margin-top: 30px;
+      color: #bdbdbd;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 800px) {
+      .ticket-options {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
+
   <header class="site-header">
     <div class="logo">Entre Nous</div>
+
     <nav>
       <a href="index.html">Accueil</a>
       <a href="evenements.html">Événements</a>
-      <a href="billetterie.html">Billetterie</a>
+      <a href="billetterie.html" class="active">Billetterie</a>
       <a href="annonces.html">Annonces</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
 
-  <section class="ticketing">
-    <h1>Réserve ta place</h1>
-    <div class="event-card">
-      <h3>Gala d'automne</h3>
-      <p class="event-date">15 novembre 2026 · Paris</p>
+  <main>
+    <section class="ticketing">
 
-      <!-- Widget Weezevent : remplace WID par ton identifiant d'événement -->
-      <div id="weezevent-widget" data-event="WID"></div>
-      <script src="https://widget.weezevent.com/widget/widget.js"></script>
-    </div>
-  </section>
+      <div class="section-heading">
+        <span class="eyebrow">ENTRE NOUS</span>
+        <h1>Choisis ton billet</h1>
+      </div>
+
+      <p class="ticket-intro">
+        Prépare-toi à vivre une expérience inoubliable.
+        Sélectionne la formule qui te convient pour le
+        Gala d'automne du 15 novembre 2026 à Paris.
+      </p>
+
+      <div class="ticket-options">
+
+        <!-- BILLET SIMPLE -->
+        <a href="billet-simple.html" class="ticket-option">
+          <h2>Billet Simple</h2>
+          <p>
+            L'accès à l'événement pour profiter de la soirée
+            avec les autres participants.
+          </p>
+          <span class="btn">Choisir ce billet</span>
+        </a>
+
+        <!-- BILLET STANDARD -->
+        <a href="billet-standard.html" class="ticket-option">
+          <h2>Billet Standard</h2>
+          <p>
+            Une formule avec les avantages standard
+            prévus pour le gala.
+          </p>
+          <span class="btn">Choisir ce billet</span>
+        </a>
+
+        <!-- BILLET VIP -->
+        <a href="billet-vip.html" class="ticket-option">
+          <h2>Billet VIP</h2>
+          <p>
+            Une formule privilégiée pour vivre
+            une expérience plus exclusive.
+          </p>
+          <span class="btn">Choisir ce billet</span>
+        </a>
+
+      </div>
+
+      <p class="ticket-note">
+        Les tarifs et les avantages détaillés seront indiqués
+        sur chaque page de billet.
+      </p>
+
+    </section>
+  </main>
 
   <footer>
-    <p>&copy; 2026 Entre Nous. Tous droits réservés.</p>
+    <p>&copy; 2026 <strong>Entre Nous</strong>. Tous droits réservés.</p>
   </footer>
+
 </body>
-</html>
+  </html>
