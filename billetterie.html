@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Billetterie - Entre Nous</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">Entre Nous</div>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="evenements.html">Événements</a>
+      <a href="billetterie.html">Billetterie</a>
+      <a href="annonces.html">Annonces</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="ticketing">
+    <h1>Réserve ta place</h1>
+    <div class="event-card">
+      <h3>Gala d'automne</h3>
+      <p class="event-date">15 novembre 2026 · Paris</p>
+
+      <!-- Widget Weezevent : remplace WID par ton identifiant d'événement -->
+      <div id="weezevent-widget" data-event="WID"></div>
+      <script src="https://widget.weezevent.com/widget/widget.js"></script>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Entre Nous. Tous droits réservés.</p>
+  </footer>
+</body>
+</html>
