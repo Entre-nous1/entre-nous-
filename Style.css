@@ -1,46 +1,718 @@
-body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  margin: 0;
-  background: #0d0d0d;
-  color: #f5f5f5;
+/* =========================================
+   ENTRE-NOUS — STYLE CSS COMPLET
+   Accueil • Diaporama • Galerie • Réservations
+========================================= */
+
+/* 1. VARIABLES */
+
+:root {
+  --gold: #d8ad55;
+  --gold-light: #f4d58a;
+  --black: #0d0d0d;
+  --dark: #151515;
+  --dark-card: #1c1c1c;
+  --white: #f5f5f5;
+  --gray: #bdbdbd;
+  --border: rgba(216, 173, 85, 0.3);
+  --radius: 12px;
+  --transition: 0.3s ease;
 }
 
+/* 2. RESET */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 4px;
+}
+
+::selection {
+  background: var(--gold);
+  color: #111;
+}
+
+/* 3. EN-TÊTE ET NAVIGATION */
+
 .site-header {
+  position: relative;
+  z-index: 20;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 3rem;
-  background: #1a1a1a;
+  gap: 20px;
+  padding: 20px 5%;
+  background: #111;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  color: var(--gold);
+  font-size: 27px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.site-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 22px;
 }
 
 .site-header nav a {
-  color: #f5f5f5;
-  text-decoration: none;
-  margin-left: 1.5rem;
+  position: relative;
+  color: var(--white);
+  font-size: 14px;
+  transition: color var(--transition);
 }
 
-.hero {
-  text-align: center;
-  padding: 6rem 2rem;
-  background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+.site-header nav a:hover,
+.site-header nav a.active {
+  color: var(--gold);
 }
+
+/* 4. ACCUEIL ET DIAPORAMA */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 580px;
+  padding: 80px 6%;
+  overflow: hidden;
+  text-align: center;
+  background: #202020;
+}
+
+.hero-slides,
+.hero-shade {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-slides {
+  z-index: -2;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.04);
+  transition:
+    opacity 1.2s ease,
+    transform 6s ease;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hero-shade {
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.82),
+    rgba(0, 0, 0, 0.43),
+    rgba(0, 0, 0, 0.78)
+  );
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 850px;
+}
+
+.hero-label {
+  display: inline-block;
+  margin-bottom: 22px;
+  padding: 7px 18px;
+  border: 1px solid var(--gold);
+  border-radius: 30px;
+  color: var(--gold-light);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.hero h1 {
+  margin-bottom: 20px;
+  font-size: clamp(36px, 7vw, 70px);
+  font-weight: 900;
+  line-height: 1.12;
+  text-transform: uppercase;
+}
+
+.hero h1 span {
+  color: var(--gold);
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 0 auto 25px;
+  color: #f0f0f0;
+  font-size: 17px;
+}
+
+.slide-controls {
+  position: absolute;
+  right: 0;
+  bottom: 25px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.slide-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 20px;
+  background: #aaa;
+  transition: all var(--transition);
+}
+
+.slide-dot.active {
+  width: 28px;
+  background: var(--gold);
+}
+
+/* 5. BOUTONS */
 
 .btn {
   display: inline-block;
-  margin-top: 1.5rem;
-  padding: 0.8rem 2rem;
-  background: #fff;
-  color: #1a1a1a;
-  border-radius: 30px;
-  text-decoration: none;
+  margin-top: 15px;
+  padding: 13px 25px;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  background: var(--gold);
+  color: #111;
   font-weight: bold;
+  text-align: center;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition);
+}
+
+.btn:hover {
+  background: transparent;
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+
+/* 6. SECTIONS */
+
+.section {
+  padding: 70px 6%;
+}
+
+.section-heading {
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.section-heading .eyebrow {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.section-heading h2 {
+  margin: 8px 0 12px;
+  font-size: clamp(27px, 4vw, 40px);
+  line-height: 1.2;
+}
+
+.section-heading p {
+  color: var(--gray);
+}
+
+/* 7. PROCHAIN ÉVÉNEMENT */
+
+.next-event {
+  background: #151515;
 }
 
 .event-card {
-  max-width: 400px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: #1a1a1a;
-  border-radius: 12px;
+  max-width: 700px;
+  margin: 25px auto 0;
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--dark-card);
   text-align: center;
+  transition: border-color var(--transition);
+}
+
+.event-card:hover {
+  border-color: var(--gold);
+}
+
+.event-card h3 {
+  margin-bottom: 12px;
+  color: var(--gold);
+  font-size: 25px;
+}
+
+.event-card p {
+  margin-bottom: 15px;
+  color: var(--gray);
+}
+
+/* 8. GALERIE D'ALBUMS */
+
+.gallery {
+  background: #101010;
+}
+
+.gallery-note {
+  max-width: 750px;
+  margin: -10px auto 30px;
+  color: var(--gray);
+  text-align: center;
+}
+
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.album-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #303030;
+  border-radius: var(--radius);
+  background: var(--dark-card);
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.album-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.album-cover {
+  height: 230px;
+  overflow: hidden;
+  background: #28231a;
+}
+
+.album-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.album-card:hover .album-cover img {
+  transform: scale(1.06);
+}
+
+.album-info {
+  padding: 20px;
+}
+
+.album-info h3 {
+  margin-bottom: 8px;
+  color: var(--gold);
+  font-size: 20px;
+}
+
+.album-info p {
+  margin-bottom: 16px;
+  color: var(--gray);
+  font-size: 14px;
+}
+
+.album-button {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--gold);
+  transition: all var(--transition);
+}
+
+.album-button:hover {
+  background: var(--gold);
+  color: #111;
+}
+
+/* 9. FENÊTRE D'ALBUM */
+
+.modal {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: none;
+  overflow-y: auto;
+  padding: 25px;
+  background: rgba(0, 0, 0, 0.97);
+}
+
+.modal.open {
+  display: block;
+}
+
+.modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 15px 0 20px;
+  background: #090909;
+}
+
+.modal-header h2 {
+  color: var(--gold);
+  font-size: 23px;
+}
+
+.close-modal {
+  padding: 9px 15px;
+  border: 1px solid #666;
+  border-radius: 5px;
+  background: #222;
+  color: white;
+}
+
+.close-modal:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  max-width: 1200px;
+  margin: 25px auto;
+}
+
+.photo-grid img {
+  width: 100%;
+  height: 250px;
+  border-radius: 8px;
+  object-fit: cover;
+  cursor: zoom-in;
+  background: #222;
+  transition: transform var(--transition);
+}
+
+.photo-grid img:hover {
+  transform: scale(1.02);
+}
+
+.empty-album {
+  grid-column: 1 / -1;
+  padding: 35px 20px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  color: var(--gray);
+  text-align: center;
+}
+
+/* 10. PHOTO EN GRAND FORMAT */
+
+.lightbox {
+  position: fixed;
+  z-index: 120;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.98);
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 95%;
+  max-height: 85vh;
+  object-fit: contain;
+}
+
+.lightbox button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  border: 1px solid #666;
+  border-radius: 5px;
+  background: #222;
+  color: white;
+}
+
+/* 11. FUTURES RÉSERVATIONS ET ACTIVITÉS */
+
+.activities,
+.reservations {
+  padding: 70px 6%;
+  background: #151515;
+}
+
+.activity-grid,
+.reservation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.activity-card,
+.reservation-card {
+  padding: 25px;
+  border: 1px solid #333;
+  border-radius: var(--radius);
+  background: var(--dark-card);
+  transition: border-color var(--transition);
+}
+
+.activity-card:hover,
+.reservation-card:hover {
+  border-color: var(--gold);
+}
+
+.activity-card h3,
+.reservation-card h3 {
+  margin-bottom: 10px;
+  color: var(--gold);
+}
+
+.activity-card p,
+.reservation-card p {
+  color: var(--gray);
+}
+
+.reservation-form {
+  display: grid;
+  gap: 18px;
+  width: 100%;
+  max-width: 750px;
+  margin: 30px auto;
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--dark-card);
+}
+
+.reservation-form label {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: bold;
+}
+
+.reservation-form input,
+.reservation-form select,
+.reservation-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  background: #101010;
+  color: var(--white);
+}
+
+.reservation-form input:focus,
+.reservation-form select:focus,
+.reservation-form textarea:focus {
+  border-color: var(--gold);
+}
+
+.reservation-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Ce style prépare le formulaire.
+   L'envoi réel devra être relié à un service ou à un serveur. */
+
+/* 12. PIED DE PAGE */
+
+footer {
+  padding: 30px 5%;
+  border-top: 1px solid var(--border);
+  background: #080808;
+  color: var(--gray);
+  text-align: center;
+  font-size: 13px;
+}
+
+footer p + p {
+  margin-top: 5px;
+}
+
+footer strong {
+  color: var(--gold);
+}
+
+/* 13. RESPONSIVE — TABLETTES */
+
+@media (max-width: 900px) {
+  .site-header {
+    padding: 18px 4%;
+  }
+
+  .site-header nav {
+    gap: 14px;
+  }
+
+  .album-grid,
+  .activity-grid,
+  .reservation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 14. RESPONSIVE — TÉLÉPHONES */
+
+@media (max-width: 600px) {
+  .site-header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 18px 12px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .site-header nav {
+    justify-content: center;
+    gap: 12px 16px;
+  }
+
+  .site-header nav a {
+    font-size: 13px;
+  }
+
+  .hero {
+    min-height: 490px;
+    padding: 65px 20px;
+  }
+
+  .hero-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .section,
+  .activities,
+  .reservations {
+    padding: 48px 5%;
+  }
+
+  .album-grid,
+  .activity-grid,
+  .reservation-grid,
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .album-cover {
+    height: 230px;
+  }
+
+  .photo-grid img {
+    height: 260px;
+  }
+
+  .event-card,
+  .reservation-form {
+    padding: 22px 16px;
+  }
+
+  .modal {
+    padding: 15px;
+  }
+
+  .modal-header h2 {
+    font-size: 18px;
+  }
+}
+
+/* 15. ACCESSIBILITÉ ET ANIMATIONS */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
   }
